@@ -142,19 +142,46 @@ function animateCounters(){
 }
 
 /* ═══════════════════════════════════════════
-   NAV
+   NAV — smooth scroll, clean URL (no #hash)
 ═══════════════════════════════════════════ */
+const NAV_OFFSET=80;
+
+function cleanUrl(){
+  const clean=location.pathname+location.search;
+  if(location.hash||location.href.endsWith('#'))history.replaceState(null,'',clean);
+}
+
+function scrollToSection(id){
+  if(menuOpen)closeMenu();
+  const top=id==='home'?0:(()=>{
+    const el=document.getElementById(id);
+    return el?el.getBoundingClientRect().top+window.scrollY-NAV_OFFSET:0;
+  })();
+  window.scrollTo({top,behavior:'smooth'});
+  cleanUrl();
+}
+
+document.querySelectorAll('[data-section]').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    scrollToSection(link.dataset.section);
+  });
+});
+
+if(location.hash){
+  const id=location.hash.slice(1);
+  history.replaceState(null,'',location.pathname+location.search);
+  requestAnimationFrame(()=>{if(id)scrollToSection(id);});
+}
+
 window.addEventListener('scroll',()=>{
   const nav=document.getElementById('mainNav');
   nav.classList.toggle('scrolled',window.scrollY>60);
   const ids=['about','skills','experience','education','projects','contact'];
-  let cur='';
+  let cur=window.scrollY<120?'home':'';
   ids.forEach(id=>{const el=document.getElementById(id);if(el&&window.scrollY>=el.offsetTop-160)cur=id;});
-  document.querySelectorAll('.nav-links a').forEach(a=>{
-    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
-  });
-  document.querySelectorAll('.mobile-menu a[href^="#"]').forEach(a=>{
-    a.classList.toggle('active',a.getAttribute('href')==='#'+cur);
+  document.querySelectorAll('.nav-links a[data-section], .mobile-menu a[data-section]').forEach(a=>{
+    a.classList.toggle('active',a.dataset.section===cur);
   });
 });
 let menuOpen=false;

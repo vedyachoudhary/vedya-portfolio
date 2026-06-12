@@ -58,17 +58,17 @@
 
 <!-- ── NAV ── -->
 <nav id="mainNav">
-  <a href="#home" class="nav-logo" aria-label="Go to home">
+  <a href="#" class="nav-logo" data-section="home" aria-label="Go to home">
     <img src="logo-pastel.svg" alt="" class="site-logo" aria-hidden="true">
     <span class="nav-name">Vedya Anaparthi</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" data-section="about">About</a></li>
+    <li><a href="#" data-section="skills">Skills</a></li>
+    <li><a href="#" data-section="experience">Experience</a></li>
+    <li><a href="#" data-section="education">Education</a></li>
+    <li><a href="#" data-section="projects">Projects</a></li>
+    <li><a href="#" data-section="contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <a href="vedya-resume.pdf" target="_blank" class="nav-resume">Resume ↗</a>
@@ -84,12 +84,12 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMenu()">About</a>
-  <a href="#skills" onclick="closeMenu()">Skills</a>
-  <a href="#experience" onclick="closeMenu()">Experience</a>
-  <a href="#education" onclick="closeMenu()">Education</a>
-  <a href="#projects" onclick="closeMenu()">Projects</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="#" data-section="about">About</a>
+  <a href="#" data-section="skills">Skills</a>
+  <a href="#" data-section="experience">Experience</a>
+  <a href="#" data-section="education">Education</a>
+  <a href="#" data-section="projects">Projects</a>
+  <a href="#" data-section="contact">Contact</a>
   <a href="vedya-resume.pdf" target="_blank" class="mobile-resume" onclick="closeMenu()">Resume ↗</a>
   <a href="mailto:vedyachowdary5533@gmail.com" class="mobile-cta" onclick="closeMenu()">Hire Me</a>
 </div>
@@ -109,8 +109,8 @@
         <div class="decrypt-line" id="decryptLine"><span class="decrypt-prefix">I am </span><span id="decryptText"></span><span class="decrypt-cursor"></span></div>
         <p class="hero-desc">Backend Software Engineer with 1+ year of experience in Java and Spring Boot — building secure RESTful APIs, microservices, and cloud-integrated healthcare applications.</p>
         <div class="hero-actions">
-          <a href="#projects" class="btn-primary magnetic">View My Work →</a>
-          <a href="#contact" class="btn-outline magnetic">Let's Connect</a>
+          <a href="#" data-section="projects" class="btn-primary magnetic">View My Work →</a>
+          <a href="#" data-section="contact" class="btn-outline magnetic">Let's Connect</a>
         </div>
       </div>
       <div class="hero-right float-scale" style="transition-delay:.2s;">
